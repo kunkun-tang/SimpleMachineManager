@@ -58,34 +58,23 @@ object Introducer extends App{
   Await.ready(server)
 
 
-  def sendRmMsg(rmAddr: String)={
-    for(addr <- addrSet){
-      val clientServiceIface =
-        Thrift.newIface[MemberShip.FutureIface](elem)
-      val result: Future[String] = clientServiceIface.remove(rmAddr);
-      try{
-        Await.result(result, 3.seconds);
-        result.onFailure { exp =>
-          println("some Exception Happens: " + exp)
-        }
-        result.onSuccess { pingMeg =>
-          println("Remove SuccesFul.");
-        }
-      }catch{
-        case e: Exception => println("can not connect to the current machine.");
-      }
+  // def sendRmMsg(rmAddr: String)={
+  //   for(addr <- addrSet){
+  //     val clientServiceIface =
+  //       Thrift.newIface[MemberShip.FutureIface](addr)
+  //     val result: Future[String] = clientServiceIface.remove(rmAddr);
+  //     try{
+  //       Await.result(result, 3.seconds);
+  //       result.onFailure { exp =>
+  //         println("some Exception Happens: " + exp)
+  //       }
+  //       result.onSuccess { pingMeg =>
+  //         println("Remove SuccesFul.");
+  //       }
+  //     }catch{
+  //       case e: Exception => println("can not connect to the current machine.");
+  //     }
 
-    }
-  }
+  //   }
+  // }
 }
-
-
-
-
-
-
-
-
-
-
-

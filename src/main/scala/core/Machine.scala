@@ -7,6 +7,7 @@ import com.twitter.finagle.service.{RetryExceptionsFilter, RetryPolicy, TimeoutF
 import com.twitter.finagle.thrift.ThriftServiceIface
 import com.twitter.finagle.util.DefaultTimer
 import com.twitter.util.{Await, Duration, Future, Throw, Try}
+import scala.collection.mutable.{Set, HashSet};
 
 object Machine extends App{
 
